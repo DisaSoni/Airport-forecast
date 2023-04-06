@@ -1,0 +1,13 @@
+extends layout.pug
+
+block content
+    div.bg-img-weather.img-fluid
+    h1.container.display-1.m-3.font-weight-bold.text-center Destination Weather
+    form( class="d-flex search-form" role="search" action="/mirage" method="GET")
+        input.form-control.me-2.search-input.h4#search-input(type="search" name="IATA" placeholder="IATA Code" style="background-color: rgb(33,37,41, 0.5) !important; color: black; font-size: 25px;" maxlength=3)
+        button.btn.btn-outline-dark Search
+
+    block prettyData
+
+    block scripts
+        script(src="../display.js")

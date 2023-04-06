@@ -1,0 +1,17 @@
+extends mirage-layout
+
+block prettyData
+    div.accordion.p-5
+        div.accordion-item.opacity-75.text-light.text-opacity-100
+            h2.accordion-header.text-light.text-opacity-100
+                button.accordion-button.open.text-light.text-opacity-100(type="button" data-bs-toggle="collapse" data-bs-target="#" + airport.attributes.IATACode) #{airport.attributes.Name} (#{airport.attributes.IATACode})
+            div.accordion-collapse.collapse.show.text-light.text-opacity-100(id=airport.attributes.IATACode)
+                div.accordion-body.text-light.text-opacity-100
+                    div.card(style="width: 15rem;").m-3
+                        div
+                            img.card-img-top(src=icon_src)
+                        div.card-body
+                            h5.card-title Weather Info
+                            p.card-text Temperature: #{temp}
+                            p.card-text Humidity: #{humidity}
+                            p.card-text Wind Speed: #{wind_speed}

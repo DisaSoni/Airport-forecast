@@ -1,0 +1,31 @@
+extends mirage-layout.pug
+
+block prettyData
+    div.accordion.p-5
+        each airport in data
+            div.accordion-item.opacity-75.text-light.text-opacity-100
+                h2.accordion-header.text-light.text-opacity-100
+                    button.fetch-data.accordion-button.collapsed.text-light.text-opacity-100(class=airport.attributes.IATACode type="button" data-bs-toggle="collapse" data-bs-target="#" + airport.attributes.IATACode) #{airport.attributes.Name} #{airport.attributes.IATACode}
+                div.accordion-collapse.collapse.text-light.text-opacity-100(id=airport.attributes.IATACode)
+                    div.accordion-body.text-light.text-opacity-100
+                        div.card(style="width: 15rem;").m-3
+                            div
+                                img.card-img-top(src="", id="img-"+airport.attributes.IATACode)
+                            div.card-body
+                                h5.card-title Weather Info
+                                p.card-text(id="temp-"+airport.attributes.IATACode) Temperature:
+                                p.card-text(id="hum-"+airport.attributes.IATACode) Humidity:
+                                p.card-text(id="wind-"+airport.attributes.IATACode) Wind Speed:
+    nav.bottom-nav
+        ul.pagination.justify-content-center
+
+            li(class="page-item " + prev).opacity-75.text-light.text-opacity-100
+                a.page-link(href="/mirage?page=" + prevNum) Previous
+
+            li.page-item.active.opacity-75.text-light.text-opacity-100
+                a.text-light.text-opacity-100.page-link(href="/mirage?page=" + curr) #{curr++}
+            while curr < till
+                li.page-item.opacity-75.text-light.text-opacity-100
+                    a.text-light.text-opacity-100.page-link(href="/mirage?page=" + curr) #{curr++}
+            li(class = "page-item " + next).opacity-75.text-light.text-opacity-100
+                a.page-link(href="/mirage?page=" + nextNum) Next
